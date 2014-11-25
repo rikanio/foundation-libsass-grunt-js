@@ -3,9 +3,12 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt); // only include this if you have added time-grunt in package.json
 
   // Include only what you want! No trailing ","!
+  var jsJquery = [
+    'bower_components/foundation/js/vendor/jquery.js'
+  ];
+
   var jsLibs = [
     // 'bower_components/foundation/js/vendor/modernizr.js', // updated - include modernizr separately at <head> and move the rest of [jsLibs] to before </body> for better page load 
-    'bower_components/foundation/js/vendor/jquery.js',
     'bower_components/foundation/js/vendor/jquery.cookie.js',
     'bower_components/foundation/js/vendor/placeholder.js',
     'bower_components/foundation/js/vendor/fastclick.js'
@@ -33,7 +36,7 @@ module.exports = function(grunt) {
   ];
 
   var jsModernizr = [
-      'bower_components/modernizr/modernizr.js'
+    'bower_components/modernizr/modernizr.js'
   ];
 
   // Your custom javascript files. No trailing ","!
@@ -55,7 +58,7 @@ module.exports = function(grunt) {
           outputStyle: 'expanded'
         },
         files: {
-          'css/app.css': 'scss/app.scss'
+          'css/<%= pkg.name %>.css': 'scss/app.scss'
         }
       },
       dist: {
@@ -63,7 +66,7 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'css/app.min.css': 'scss/app.scss'
+          'css/<%= pkg.name %>.min.css': 'scss/app.scss'
         }
       }
     },
@@ -84,6 +87,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
+          'js/libs/jquery.min.js': [jsJquery],
           'js/libs/libs.min.js': [jsLibs],
           'js/libs/foundation.min.js': [jsFoundation],
           'js/app.min.js': [jsApp],

@@ -19,6 +19,8 @@ git clone git@github.com:fruitpixel/foundation-libsass-grunt-js.git
 npm install && bower install
 ```
 
+Change the `name` value in package/json to the name of your project/website.
+
 While you're working on your project, run:
 
 `grunt`
